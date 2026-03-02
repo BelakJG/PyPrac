@@ -1,10 +1,11 @@
 import tkinter as tk
+from tkinter import ttk
 
 root = tk.Tk()
 
 #places label to root window
-message = tk.Label(root, text = "Hello, World!")
-message.pack()
+tk.Label(root, text = "Classic Label").pack()
+ttk.Label(root, text = "Themed Label").pack()
 
 root.title("Hello, World!")
 
