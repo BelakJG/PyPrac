@@ -5,7 +5,7 @@ import time
 def main():
     array = []
 
-    num_to_sort = 2500000
+    num_to_sort = 500000
     for _ in range(num_to_sort):
         array.append(random.randint(0, num_to_sort * 20))
 
