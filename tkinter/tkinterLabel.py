@@ -12,7 +12,7 @@ label = ttk.Label(
 )
 label.pack()
 
-photo = tk.PhotoImage(file = "./assets/python.png")
+photo = tk.PhotoImage(file ="../assets/python.png")
 photo_label = ttk.Label(
     root,
     image = photo,

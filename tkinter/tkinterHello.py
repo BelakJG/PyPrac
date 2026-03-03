@@ -20,7 +20,7 @@ center_y = int(screen_height/2 - window_height/2)
 root.geometry(f"{window_width}x{window_height}+{center_x}+{center_y}")
 
 try:
-    photo = tk.PhotoImage(file="./assets/pythontutorial-1.png")
+    photo = tk.PhotoImage(file="../assets/pythontutorial-1.png")
     root.iconphoto(False, photo)
 except tk.TclError:
     print("Icon not found, using default.")

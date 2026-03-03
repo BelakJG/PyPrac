@@ -23,7 +23,7 @@ def handle_click():
         title = "Information",
         message = "Download button clicked!"
     )
-download_icon = tk.PhotoImage(file = "./assets/download.png")
+download_icon = tk.PhotoImage(file ="../assets/download.png")
 download_button = ttk.Button(
     root,
     image = download_icon,
