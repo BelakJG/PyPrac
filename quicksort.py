@@ -1,7 +1,7 @@
 import random
 
-def sort(arr, left = 0, right = None):
-    if right is None:
+def sort(arr, left = 0, right = -1):
+    if right == -1:
         right = len(arr) - 1
     if left >= right:
         return
