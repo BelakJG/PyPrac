@@ -12,7 +12,7 @@ def sort(arr, left = 0, right = None):
         #partition lesser values to left of pivot
         swap_index = left - 1
         for i in range(left, right):
-            if arr[i] < pivot:
+            if arr[i] <= pivot:
                 swap_index += 1
                 arr[swap_index], arr[i] = arr[i], arr[swap_index]
 
