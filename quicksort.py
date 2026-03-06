@@ -4,26 +4,41 @@ def sort(arr, left = 0, right = None):
     if right is None:
         right = len(arr) - 1
     while left < right:
+        #insertion sort once partition is small enough
+        if right - left <= 16:
+            for i in range(left + 1, right + 1):
+                key = arr[i]
+                j = i - 1
+                while j >= left and arr[j] > key:
+                    arr[j + 1] = arr[j]
+                    j -= 1
+                arr[j + 1] = key
+            return
+
         #random pivot
         rand_index = random.randint(left, right)
-        pivot = arr[rand_index]
-        arr[rand_index], arr[right] = arr[right], arr[rand_index]
+        arr[rand_index], arr[left] = arr[left], arr[rand_index]
+        #hoare partition to limit memory swaps
+        pivot = arr[left]
+        i = left - 1
+        j = right + 1
+        while True:
+            i += 1
+            while arr[i] < pivot:
+                i += 1
+            j -= 1
+            while arr[j] > pivot:
+                j -= 1
 
-        #partition lesser values to left of pivot
-        swap_index = left - 1
-        for i in range(left, right):
-            if arr[i] <= pivot:
-                swap_index += 1
-                arr[swap_index], arr[i] = arr[i], arr[swap_index]
+            if i >= j:
+                break
 
-        #swap end of array with pivot and continue recursion
-        swap_index += 1
-        arr[swap_index], arr[right] = arr[right], arr[swap_index]
+            arr[i], arr[j] = arr[j], arr[i]
 
         #tail elimination
-        if ((swap_index - 1) - left) < (right - (swap_index + 1)):
-            sort(arr, left, swap_index - 1)
-            left = swap_index + 1
+        if (j - left) < (right - j):
+            sort(arr, left, j)
+            left = j + 1
         else:
-            sort(arr, swap_index + 1, right)
-            right = swap_index - 1
+            sort(arr, j + 1, right)
+            right = j

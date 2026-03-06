@@ -10,11 +10,11 @@ def is_sorted(arr):
     print("Array is sorted")
 
 def main():
-    array = []
+    num_to_sort = 500000
+    array = list(range(num_to_sort))
 
-    num_to_sort = 250000
-    for _ in range(num_to_sort):
-        array.append(random.randint(0, num_to_sort * 20))
+    for i in range(num_to_sort):
+        array[i] = random.randint(0, num_to_sort * 20)
 
     start = time.process_time()
     quicksort.sort(array)
