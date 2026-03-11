@@ -10,7 +10,7 @@ def is_sorted(arr):
     print("Array is sorted")
 
 def main():
-    num_to_sort = 500000
+    num_to_sort = 5000000
     array = list(range(num_to_sort))
 
     for i in range(num_to_sort):
