@@ -1,5 +1,5 @@
 import random
-import quicksort
+import introsort
 import time
 
 def is_sorted(arr):
@@ -10,14 +10,14 @@ def is_sorted(arr):
     print("Array is sorted")
 
 def main():
-    num_to_sort = 5000000
+    num_to_sort = 1000000
     array = list(range(num_to_sort))
 
     for i in range(num_to_sort):
         array[i] = random.randint(0, num_to_sort * 20)
 
     start = time.process_time()
-    quicksort.sort(array)
+    introsort.sort(array)
     end = time.process_time()
 
     is_sorted(array)

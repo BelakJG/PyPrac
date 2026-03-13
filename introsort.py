@@ -1,8 +1,14 @@
 import random
+import math
+import heapsort
 
-def sort(arr, left = 0, right = None):
-    if right is None:
-        right = len(arr) - 1
+def sort(arr):
+    left = 0
+    right = len(arr) - 1
+    max_depth = math.log2(len(arr)) * 2
+    quicksort(arr, left, right, max_depth)
+
+def quicksort(arr, left, right, depth):
     while left < right:
         #insertion sort once partition is small enough
         if right - left <= 16:
@@ -13,6 +19,11 @@ def sort(arr, left = 0, right = None):
                     arr[j + 1] = arr[j]
                     j -= 1
                 arr[j + 1] = key
+            return
+
+        #heapsort if stack is too deep
+        if depth <= 0:
+            heapsort.sort(arr, left, right)
             return
 
         #random pivot
@@ -37,8 +48,8 @@ def sort(arr, left = 0, right = None):
 
         #tail elimination
         if (j - left) < (right - j):
-            sort(arr, left, j)
+            quicksort(arr, left, j, depth - 1)
             left = j + 1
         else:
-            sort(arr, j + 1, right)
+            quicksort(arr, j + 1, right, depth - 1)
             right = j
