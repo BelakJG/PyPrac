@@ -1,6 +1,7 @@
 import random
 import math
 import heapsort
+import statistics
 
 def sort(arr):
     left = 0
@@ -27,11 +28,9 @@ def quicksort(arr, left, right, depth):
             return
 
         #use median for pivot
-        median_index = statistics.median([left, right, int((left+right) / 2)])
-        arr[median_index], arr[left] = arr[left], arr[median_index]
+        pivot = statistics.median([arr[left], arr[right], arr[int((left+right) / 2)]])
 
         #hoare partition to limit memory swaps
-        pivot = arr[left]
         i = left - 1
         j = right + 1
         while True:
